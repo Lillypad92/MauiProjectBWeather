@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-
-using MauiProjectBWeather.Models;
+﻿using MauiProjectBWeather.Models;
 using MauiProjectBWeather.Services;
 
 namespace MauiProjectBWeather.Views
 {
+
     public class GroupedForecast
     {
         public string City { get; set; }
@@ -49,6 +43,10 @@ namespace MauiProjectBWeather.Views
 
             //Here Group your forecast and bind it to your
             //ListView ItemSource
+
+            groupedforecast.Items = forecast.Items.GroupBy(x => new DateTime(x.DateTime.Date.Year, x.DateTime.Date.Month, x.DateTime.Date.Day));
+            GroupedForecast.ItemsSource = groupedforecast.Items;            
         }
+
     }
 }
